@@ -5,15 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Easy Mode - Sample Searcher IO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    body { font-family: 'Rubik', sans-serif; }
     .vinyl {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: black;
+      background: repeating-radial-gradient(black, black 2px, #333 2px, #333 4px);
+      animation: spin 2s linear infinite;
       position: relative;
-      animation: spin 4s linear infinite;
+      margin: 0 auto;
     }
     .vinyl::before {
       content: '';
@@ -31,18 +36,26 @@
     }
   </style>
 </head>
-<body class="bg-gray-50 font-sans">
-  <nav class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-purple-600">Sample Searcher IO</h1>
-    <div class="space-x-4">
-      <a href="index.html" class="text-gray-700 hover:text-purple-600">Home</a>
+<body class="bg-[#f9f5f0] text-gray-800">
+  <nav class="bg-purple-100 shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-extrabold text-purple-700">Sample Searcher IO</h1>
+    <div class="space-x-4 text-sm">
+      <a href="index.html" class="hover:text-purple-700">Home</a>
+      <a href="game-easy.html" class="hover:text-purple-700">Easy</a>
+      <a href="game-medium.html" class="hover:text-purple-700">Medium</a>
+      <a href="game-hard.html" class="hover:text-purple-700">Hard</a>
+      <a href="east.html" class="hover:text-purple-700">East Coast</a>
+      <a href="west.html" class="hover:text-purple-700">West Coast</a>
+      <a href="midwest.html" class="hover:text-purple-700">Midwest</a>
+      <a href="south.html" class="hover:text-purple-700">South</a>
     </div>
   </nav>
 
-  <main class="max-w-2xl mx-auto p-6 text-center">
+  <main class="max-w-2xl mx-auto p-6 text-center" id="quiz-area">
     <h2 class="text-2xl font-bold mb-4">Which Region Is This Beat From?</h2>
-    <div class="vinyl mx-auto mb-6"></div>
-    <!-- Placeholder for the future audio element -->
+    <div class="vinyl mb-4"></div>
+    <audio id="audio" controls class="mx-auto mb-4"></audio>
+    <div id="question-count" class="text-sm text-gray-500 mb-2">Song 1 of X</div>
     <div class="mb-4">
       <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('east')">East Coast</button>
       <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('west')">West Coast</button>
@@ -51,31 +64,9 @@
     </div>
     <div id="feedback" class="text-xl font-semibold mt-4"></div>
     <div id="region-info" class="mt-4 text-left hidden bg-white shadow p-4 rounded-lg"></div>
+    <div id="score" class="text-sm text-gray-600 mt-4">Score: 0</div>
   </main>
 
-  <script>
-    const correctAnswer = 'west'; // Example correct region
-    const regionData = {
-      east: `East Coast: Aggressive beats, complex wordplay, "Boom Bap" drums, Jazz/Funk influence.`,
-      west: `West Coast: Laid-back sound, G-funk synths, funk-based grooves, storytelling and smooth flows.`,
-      south: `South: Heavy basslines, trap influence, gospel and blues roots, Atlanta's bouncy trap.`,
-      midwest: `Midwest: Soulful production, live instrumentation, Chicago drill vs introspective artists like Kanye.`
-    };
-
-    function checkAnswer(answer) {
-      const feedback = document.getElementById('feedback');
-      const info = document.getElementById('region-info');
-      if (answer === correctAnswer) {
-        feedback.textContent = '✅ Correct!';
-        feedback.className = 'text-green-600 font-bold';
-        info.classList.add('hidden');
-      } else {
-        feedback.textContent = '❌ Wrong! That was a ' + correctAnswer.charAt(0).toUpperCase() + correctAnswer.slice(1) + ' beat.';
-        feedback.className = 'text-red-600 font-bold';
-        info.textContent = regionData[correctAnswer];
-        info.classList.remove('hidden');
-      }
-    }
-  </script>
+  <script src="js/quiz.js"></script>
 </body>
 </html>
