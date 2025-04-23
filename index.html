@@ -1,71 +1,64 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sample Searcher IO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    body { font-family: 'Rubik', sans-serif; }
     .vinyl {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      background: black;
+      background: repeating-radial-gradient(black, black 2px, #333 2px, #333 4px);
+      animation: spin 2s linear infinite;
       position: relative;
-      animation: spin 4s linear infinite;
     }
     .vinyl::before {
       content: '';
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       background: red;
       border-radius: 50%;
-      top: 40px;
-      left: 40px;
+      top: 47.5px;
+      left: 47.5px;
     }
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    .feedback {
-      display: none;
-    }
-    .feedback.correct { color: green; font-weight: bold; display: block; }
-    .feedback.wrong { color: red; font-weight: bold; display: block; }
   </style>
 </head>
-<body class="bg-gray-50 font-sans">
-  <nav class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-purple-600">Sample Searcher IO</h1>
-    <div class="space-x-4">
-      <a href="index.html" class="text-gray-700 hover:text-purple-600">Home</a>
-      <a href="east.html" class="text-gray-700 hover:text-purple-600">East Coast</a>
-      <a href="west.html" class="text-gray-700 hover:text-purple-600">West Coast</a>
-      <a href="midwest.html" class="text-gray-700 hover:text-purple-600">Midwest</a>
-      <a href="south.html" class="text-gray-700 hover:text-purple-600">South</a>
-      <a href="game-easy.html" class="text-gray-700 hover:text-purple-600">Game</a>
+<body class="bg-[#f9f5f0] text-gray-800">
+  <nav class="bg-purple-100 shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-extrabold text-purple-700">Sample Searcher IO</h1>
+    <div class="space-x-4 text-sm">
+      <a href="index.html" class="hover:text-purple-700">Home</a>
+      <a href="game-easy.html" class="hover:text-purple-700">Easy</a>
+      <a href="game-medium.html" class="hover:text-purple-700">Medium</a>
+      <a href="game-hard.html" class="hover:text-purple-700">Hard</a>
+      <a href="east.html" class="hover:text-purple-700">East Coast</a>
+      <a href="west.html" class="hover:text-purple-700">West Coast</a>
+      <a href="midwest.html" class="hover:text-purple-700">Midwest</a>
+      <a href="south.html" class="hover:text-purple-700">South</a>
     </div>
   </nav>
 
   <main class="text-center p-10">
-    <h2 class="text-3xl font-bold mb-4 text-purple-700">Welcome to Sample Searcher IO</h2>
-    <p class="mb-6 text-gray-700">Learn how to identify where hip hop beats come from – East, West, South, or Midwest!</p>
-    <div class="flex justify-center items-center">
-      <div class="vinyl mr-6"></div>
-      <button onclick="window.location.href='game-easy.html'" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow">Start Game</button>
+    <h2 class="text-4xl font-black mb-4 text-purple-800">Welcome to Sample Searcher IO</h2>
+    <p class="mb-6 text-lg">Learn how to identify where hip hop beats come from – East, West, South, or Midwest!</p>
+    <div class="flex flex-col items-center gap-6">
+      <div class="vinyl"></div>
+      <button onclick="window.location.href='game-easy.html'"
+        class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition-transform hover:scale-105">
+        Start Game
+      </button>
     </div>
-    <div id="feedback" class="feedback mt-6 text-xl"></div>
   </main>
-
-  <script>
-    // Feedback demo function (for testing only)
-    function showFeedback(correct) {
-      const feedback = document.getElementById('feedback');
-      feedback.className = 'feedback ' + (correct ? 'correct' : 'wrong');
-      feedback.textContent = correct ? '✅ Correct!' : '❌ Wrong!';
-    }
-  </script>
 </body>
 </html>
