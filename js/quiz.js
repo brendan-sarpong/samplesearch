@@ -21,7 +21,8 @@ let score = 0;
 
 function loadQuestion() {
   const q = questions[current];
-  document.getElementById('audio').src = q.audio;
+  const audio = document.getElementById('audio');
+  if (audio) audio.src = q.audio;
   document.getElementById('feedback').textContent = '';
   document.getElementById('region-info').classList.add('hidden');
   document.getElementById('region-info').textContent = '';
@@ -45,7 +46,6 @@ function checkAnswer(choice) {
   }
   document.getElementById('score').textContent = `Score: ${score}/${questions.length}`;
 
-  // Move to next question after 3 seconds
   setTimeout(() => {
     current++;
     if (current < questions.length) {
