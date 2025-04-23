@@ -1,32 +1,52 @@
-<!-- east.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>East Coast Hip Hop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .hover-box:hover .extra-info {
-      display: block;
+    body { font-family: 'Rubik', sans-serif; }
+    .hover-box:hover .extra-info { display: block; }
+    .hover-box::after {
+      content: '⬈ Hover for more';
+      font-size: 0.75rem;
+      color: #888;
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
     }
   </style>
 </head>
-<body class="bg-gray-50 font-sans">
-  <nav class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-purple-600">Sample Searcher IO</h1>
-    <div class="space-x-4">
-      <a href="index.html" class="text-gray-700 hover:text-purple-600">Home</a>
+<body class="bg-[#f9f5f0] text-gray-800">
+  <nav class="bg-purple-100 shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-extrabold text-purple-700">Sample Searcher IO</h1>
+    <div class="space-x-4 text-sm">
+      <a href="index.html" class="hover:text-purple-700">Home</a>
+      <a href="game-easy.html" class="hover:text-purple-700">Easy</a>
+      <a href="game-medium.html" class="hover:text-purple-700">Medium</a>
+      <a href="game-hard.html" class="hover:text-purple-700">Hard</a>
+      <a href="west.html" class="hover:text-purple-700">West</a>
+      <a href="midwest.html" class="hover:text-purple-700">Midwest</a>
+      <a href="south.html" class="hover:text-purple-700">South</a>
     </div>
   </nav>
 
   <main class="max-w-3xl mx-auto p-6">
     <h2 class="text-3xl font-bold mb-6 text-purple-700">East Coast Hip Hop</h2>
-    <div class="hover-box relative bg-white shadow p-4 rounded-lg cursor-pointer">
+    <div class="hover-box relative bg-white shadow p-4 rounded-lg cursor-pointer mb-4">
       <p class="text-lg font-semibold">East Coast is known for aggressive beats and complex lyricism.</p>
       <div class="extra-info mt-2 hidden text-sm text-gray-600">
-        <p>Originating in the Bronx, NY, East Coast hip hop emphasizes lyricism, boom bap beats, and jazz/funk influences. Artists like Nas, Biggie, and A Tribe Called Quest are major figures. The production often focuses on sampled drums, and the lyrical content tends to be reflective, political, or street-centric.</p>
+        Originating in the Bronx, NY, it emphasizes lyricism, boom bap beats, and jazz/funk. Notables include Nas, Biggie, and A Tribe Called Quest.
       </div>
+    </div>
+    <div class="text-sm text-purple-600 mt-10 flex gap-4">
+      <a href="west.html" class="hover:underline">Explore West Coast →</a>
+      <a href="midwest.html" class="hover:underline">Explore Midwest →</a>
+      <a href="south.html" class="hover:underline">Explore South →</a>
     </div>
   </main>
 </body>
