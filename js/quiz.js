@@ -1,4 +1,3 @@
-
 // quiz.js
 const questions = [
   {
@@ -27,6 +26,7 @@ function loadQuestion() {
   document.getElementById('region-info').classList.add('hidden');
   document.getElementById('region-info').textContent = '';
   document.getElementById('score').textContent = `Score: ${score}/${questions.length}`;
+  document.getElementById('question-count').textContent = `Song ${current + 1} of ${questions.length}`;
 }
 
 function checkAnswer(choice) {
@@ -51,7 +51,11 @@ function checkAnswer(choice) {
     if (current < questions.length) {
       loadQuestion();
     } else {
-      document.getElementById('quiz-area').innerHTML = `<h2 class='text-2xl font-bold text-purple-700'>Game Over!</h2><p class='text-lg mt-2'>Final Score: ${score}/${questions.length}</p>`;
+      document.getElementById('quiz-area').innerHTML = `
+        <h2 class='text-2xl font-bold text-purple-700'>Game Over!</h2>
+        <p class='text-lg mt-2'>Final Score: ${score}/${questions.length}</p>
+        <button onclick="window.location.reload()" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Play Again</button>
+      `;
     }
   }, 3000);
 }
