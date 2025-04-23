@@ -1,0 +1,81 @@
+<!-- game-easy.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Mode - Sample Searcher IO</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .vinyl {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: black;
+      position: relative;
+      animation: spin 4s linear infinite;
+    }
+    .vinyl::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      top: 40px;
+      left: 40px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-purple-600">Sample Searcher IO</h1>
+    <div class="space-x-4">
+      <a href="index.html" class="text-gray-700 hover:text-purple-600">Home</a>
+    </div>
+  </nav>
+
+  <main class="max-w-2xl mx-auto p-6 text-center">
+    <h2 class="text-2xl font-bold mb-4">Which Region Is This Beat From?</h2>
+    <div class="vinyl mx-auto mb-6"></div>
+    <!-- Placeholder for the future audio element -->
+    <div class="mb-4">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('east')">East Coast</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('west')">West Coast</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('south')">South</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('midwest')">Midwest</button>
+    </div>
+    <div id="feedback" class="text-xl font-semibold mt-4"></div>
+    <div id="region-info" class="mt-4 text-left hidden bg-white shadow p-4 rounded-lg"></div>
+  </main>
+
+  <script>
+    const correctAnswer = 'west'; // Example correct region
+    const regionData = {
+      east: `East Coast: Aggressive beats, complex wordplay, "Boom Bap" drums, Jazz/Funk influence.`,
+      west: `West Coast: Laid-back sound, G-funk synths, funk-based grooves, storytelling and smooth flows.`,
+      south: `South: Heavy basslines, trap influence, gospel and blues roots, Atlanta's bouncy trap.`,
+      midwest: `Midwest: Soulful production, live instrumentation, Chicago drill vs introspective artists like Kanye.`
+    };
+
+    function checkAnswer(answer) {
+      const feedback = document.getElementById('feedback');
+      const info = document.getElementById('region-info');
+      if (answer === correctAnswer) {
+        feedback.textContent = '✅ Correct!';
+        feedback.className = 'text-green-600 font-bold';
+        info.classList.add('hidden');
+      } else {
+        feedback.textContent = '❌ Wrong! That was a ' + correctAnswer.charAt(0).toUpperCase() + correctAnswer.slice(1) + ' beat.';
+        feedback.className = 'text-red-600 font-bold';
+        info.textContent = regionData[correctAnswer];
+        info.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
