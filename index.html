@@ -9,78 +9,108 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body { font-family: 'Rubik', sans-serif; }
+    :root {
+      --text-color: #f3e6ef;
+      --background-color: #3a2c34;
+      --primary-color: #cd9abe;
+      --secondary-color: #1e1219;
+      --accent-color: #b16961;
+    }
+
+    body { 
+      font-family: 'Rubik', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
     .vinyl {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: repeating-radial-gradient(black, black 2px, #333 2px, #333 4px);
+      width: 200px;
+      height: 200px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="100" fill="black"/><defs><linearGradient id="split" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0.5" stop-color="%23c9a4ff"/><stop offset="0.5" stop-color="%235a2673"/></linearGradient></defs><circle cx="100" cy="100" r="22" fill="url(%23split)"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       animation: spin 2s linear infinite;
       position: relative;
+      margin: 0 auto;
     }
+
     .vinyl::before {
       content: '';
       position: absolute;
-      width: 25px;
-      height: 25px;
-      background: red;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-color);
       border-radius: 50%;
-      top: 47.5px;
-      left: 47.5px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 4px 1px var(--accent-color);
     }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    .nav-bg {
+      background-color: var(--secondary-color);
+      border-bottom: 1px solid var(--primary-color);
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-color);
+    }
+
+    .text-primary {
+      color: var(--text-color);
+    }
+
+    .text-accent {
+      color: var(--primary-color);
+    }
+
+    .hover-accent:hover {
+      color: var(--accent-color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+    }
   </style>
 </head>
-<body class="bg-[#f9f5f0] text-gray-800 min-h-screen flex flex-col">
-  <nav class="bg-purple-100 shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-extrabold text-purple-700">Sample Searcher IO</h1>
+<body class="min-h-screen flex flex-col">
+  <nav class="nav-bg shadow p-4 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
     <div class="space-x-4 text-sm">
-      <a href="index.html" class="hover:text-purple-700">Home</a>
-      <a href="game-easy.html" class="hover:text-purple-700">Easy</a>
-      <a href="game-medium.html" class="hover:text-purple-700">Medium</a>
-      <a href="game-hard.html" class="hover:text-purple-700">Hard</a>
-      <div class="inline-block relative group">
-        <button class="hover:text-purple-700 focus:outline-none">Regions ▾</button>
-        <div class="absolute hidden group-hover:block bg-white border rounded shadow mt-1">
-          <a href="east.html" class="block px-4 py-2 text-sm hover:bg-purple-100">East Coast</a>
-          <a href="west.html" class="block px-4 py-2 text-sm hover:bg-purple-100">West Coast</a>
-          <a href="midwest.html" class="block px-4 py-2 text-sm hover:bg-purple-100">Midwest</a>
-          <a href="south.html" class="block px-4 py-2 text-sm hover:bg-purple-100">South</a>
-        </div>
-      </div>
+      <a href="index.html" class="text-primary hover-accent">Home</a>
+      <a href="game-easy.html" class="text-primary hover-accent">Easy</a>
+      <a href="game-medium.html" class="text-primary hover-accent">Medium</a>
+      <a href="game-hard.html" class="text-primary hover-accent">Hard</a>
+      <a href="regions.html" class="text-primary hover-accent font-semibold">Regions</a>
     </div>
   </nav>
 
   <main class="flex-grow flex flex-col justify-center items-center text-center px-4">
     <div class="mb-10">
-      <div class="vinyl mx-auto mb-6"></div>
-      <h2 class="text-5xl font-extrabold mb-4 text-purple-800">Welcome to Sample Searcher IO</h2>
-      <p class="mb-6 text-lg max-w-xl">Learn how to identify where hip hop beats come from – East, West, South, or Midwest!</p>
+      <div class="vinyl mx-auto mb-8" style="width:200px;height:200px;"></div>
+      <h2 class="text-5xl font-extrabold mb-6 text-accent">Welcome to Sample Searcher IO</h2>
+      <p class="mb-8 text-lg max-w-xl text-primary whitespace-nowrap">Learn how to identify where hip hop beats come from – East, West, South, or Midwest!</p>
       <button onclick="window.location.href='game-easy.html'"
-        class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition-transform hover:scale-105">
+        class="btn-primary font-bold py-6 px-20 rounded-full shadow-2xl transition-transform hover:scale-110 text-3xl w-full max-w-2xl mx-auto">
         Start Game
       </button>
-    </div>
-    <div class="grid grid-cols-2 gap-4 max-w-3xl">
-      <a href="east.html" class="bg-white p-4 rounded shadow hover:bg-purple-50 transition">
-        <h3 class="text-xl font-semibold text-purple-700">East Coast</h3>
-        <p class="text-sm text-gray-600">Boom bap, lyricism, NY origins</p>
-      </a>
-      <a href="west.html" class="bg-white p-4 rounded shadow hover:bg-purple-50 transition">
-        <h3 class="text-xl font-semibold text-purple-700">West Coast</h3>
-        <p class="text-sm text-gray-600">G-funk, smooth flows, LA vibes</p>
-      </a>
-      <a href="midwest.html" class="bg-white p-4 rounded shadow hover:bg-purple-50 transition">
-        <h3 class="text-xl font-semibold text-purple-700">Midwest</h3>
-        <p class="text-sm text-gray-600">Soulful samples & drill contrasts</p>
-      </a>
-      <a href="south.html" class="bg-white p-4 rounded shadow hover:bg-purple-50 transition">
-        <h3 class="text-xl font-semibold text-purple-700">South</h3>
-        <p class="text-sm text-gray-600">Trap, bounce, gospel roots</p>
-      </a>
     </div>
   </main>
 </body>

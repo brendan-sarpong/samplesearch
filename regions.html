@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hip Hop Regions - Sample Searcher IO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --text-color: #f3e6ef;
+      --background-color: #3a2c34;
+      --primary-color: #cd9abe;
+      --secondary-color: #1e1219;
+      --accent-color: #b16961;
+    }
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+      padding: 0 1rem;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .accordion-content.active {
+      max-height: 500px;
+      opacity: 1;
+      padding-bottom: 1rem;
+      pointer-events: auto;
+    }
+    .accordion-title {
+      width: 100%;
+      text-align: left;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      background: none;
+      border: none;
+      outline: none;
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-bg {
+      background-color: var(--secondary-color);
+      border-bottom: none;
+    }
+    .text-primary { color: var(--text-color); }
+    .text-accent { color: var(--primary-color); }
+    .hover-accent:hover { color: var(--accent-color); }
+    .region-card {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+    }
+    .region-card:hover {
+      border-color: var(--accent-color);
+    }
+    .vinyl {
+      width: 200px;
+      height: 200px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="100" fill="black"/><defs><linearGradient id="split" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0.5" stop-color="%23c9a4ff"/><stop offset="0.5" stop-color="%235a2673"/></linearGradient></defs><circle cx="100" cy="100" r="22" fill="url(%23split)"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: spin 2s linear infinite;
+      position: relative;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav-bg shadow p-4 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
+    <div class="space-x-4 text-sm">
+      <a href="index.html" class="text-primary hover-pink">Home</a>
+      <a href="game-easy.html" class="text-primary hover-pink">Easy</a>
+      <a href="game-medium.html" class="text-primary hover-pink">Medium</a>
+      <a href="game-hard.html" class="text-primary hover-pink">Hard</a>
+      <a href="regions.html" class="text-primary hover-pink font-semibold">Regions</a>
+    </div>
+  </nav>
+
+  <main class="flex flex-col items-center justify-center min-h-[80vh] max-w-3xl mx-auto p-6">
+    <h2 class="text-4xl font-bold text-center text-accent mb-4">Hip Hop Regions</h2>
+    <p class="text-sm text-center text-primary italic mb-8">*Hip Hop has expanded, evolved, and intermingled so much as a genre that these tips are only for identifying quintessential beats of a region. Have fun!</p>
+    <div class="space-y-6 w-full flex flex-col items-center">
+      <!-- East Coast Section -->
+      <div id="east" class="region-card rounded-lg shadow-md overflow-hidden w-full max-w-xl mx-auto">
+        <button class="accordion-title w-full flex justify-between items-center">
+          East Coast
+          <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <p class="text-primary">East Coast hip hop! The entire genre originated in The Bronx, NYC, and the subgenre remains an essential part of its history. It's known for aggressive beats, intricate wordplay, and multi-syllabic rhymes. It draws from genres like Disco, Electro Funk, Jazz, and Funk, with an emphasis on the rapper's lyrical skill over the beat. The "Boom Bap" sound is a hallmark, with its deep, cunky drums and a range of lyrical themes--early gangsta rap, political messages, progressive alternative sounds, and hardcore styles. East Coast artists like Kool G Rap, Public Enemy, A Tribe Called Quest, and Onyx are known for their complex lyricism and diverse subgenres.</p>
+        </div>
+      </div>
+
+      <!-- West Coast Section -->
+      <div id="west" class="region-card rounded-lg shadow-md overflow-hidden w-full max-w-xl mx-auto">
+        <button class="accordion-title w-full flex justify-between items-center">
+          West Coast
+          <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <p class="text-primary">West Coast hip hop is characterized by its laid-back, melodic sound, often focused on storytelling and reflecting local culture. G-funk, with its synthesizer-driven leads and heavy basslines, dominates the scene, drawing from the influences of Parliament Funkadelic and Zapp & Roger. The genre emerged in the 90s with a focus on gangsta rap, following the blueprint laid out by Philly artists, but with a smoother, more danceable twist. Regional differences in cities like LA and Oakland add variety, but the focus remains on chill flows and reflecting street life and party culture.</p>
+        </div>
+      </div>
+
+      <!-- Midwest Section -->
+      <div id="midwest" class="region-card rounded-lg shadow-md overflow-hidden w-full max-w-xl mx-auto">
+        <button class="accordion-title w-full flex justify-between items-center">
+          Midwest
+          <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <p class="text-primary">Midwest hip hop integrates soul, blues, and jazz with introspective lyrics, often using live instrumentation to address social and economic inequality. Chicago drill, on the other hand, offers a stark contrast with gritty, intense electronic beats and violent lyrical themes, popularized by artists like Chief Keef. In contrast, Lupe Fiasco represents a calmer, more thoughtful approach. To better understand the diversity in Midwest hip hop, it's helpful to keep in mind the region's key producers and their specific styles, which can help distinguish the different sounds within cities like Chicago, Detroit, and St. Louis.</p>
+        </div>
+      </div>
+
+      <!-- South Section -->
+      <div id="south" class="region-card rounded-lg shadow-md overflow-hidden w-full max-w-xl mx-auto">
+        <button class="accordion-title w-full flex justify-between items-center">
+          South
+          <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <p class="text-primary">Southern hip hop draws heavily from blues, gospel, and religious influences, reflecting the region's deep cultural roots and focus on community. The genre emphasizes southern hospitality and lifestyle, with smooth, "syrupy" flows where the words seem to slip effortlessly out of the artists' mouths—rhythmic and in full control of the beat. Atlanta trap, led by artists like Young Thug, took over in the 2010s with bouncy, melodic beats and heavy electronic basslines. While trap dominated the 2010s and remains popular, earlier acts like Three 6 Mafia, Outkast, and Lil Wayne helped shape the sound, infusing their distinctive slang and regional flavors into the genre. Like the famous quote goes - "The South got somethin' to say."</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.accordion-title').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        content.classList.toggle('active');
+        const icon = btn.querySelector('svg');
+        icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+      });
+    });
+
+    // Open accordion if URL has hash
+    if (window.location.hash) {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        const content = element.querySelector('.accordion-content');
+        content.classList.add('active');
+        element.scrollIntoView();
+      }
+    }
+  </script>
+</body>
+</html> 

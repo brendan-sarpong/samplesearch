@@ -1,17 +1,17 @@
 // quiz.js
 const questions = [
   {
-    audio: "assets/audio/song1.mp3",
+    audio: "assets/audio/dr_dre.mp3",
     answer: "west",
     regionInfo: {
       west: "West Coast: Laid-back sound, G-funk synths, funk-based grooves, storytelling and smooth flows."
     }
   },
   {
-    audio: "assets/audio/song2.mp3",
-    answer: "south",
+    audio: "assets/audio/mobb_deep.mp3",
+    answer: "east",
     regionInfo: {
-      south: "South: Heavy basslines, trap influence, gospel and blues roots, Atlanta's bouncy trap."
+      east: "East Coast: Aggressive beats, complex lyricism, boom bap, jazz/funk samples, legends like Nas, Biggie, and A Tribe Called Quest."
     }
   }
 ];
@@ -54,7 +54,14 @@ function checkAnswer(choice) {
       document.getElementById('quiz-area').innerHTML = `
         <h2 class='text-2xl font-bold text-purple-700'>Game Over!</h2>
         <p class='text-lg mt-2'>Final Score: ${score}/${questions.length}</p>
-        <button onclick="window.location.reload()" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Play Again</button>
+        <div class="mt-6 space-y-4">
+          <button onclick="window.location.reload()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg">
+            Play Again
+          </button>
+          <a href="regions.html" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold py-3 px-6 rounded-lg text-center">
+            Review Regions
+          </a>
+        </div>
       `;
     }
   }, 3000);
