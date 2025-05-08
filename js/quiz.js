@@ -52,13 +52,13 @@ function checkAnswer(choice) {
       loadQuestion();
     } else {
       document.getElementById('quiz-area').innerHTML = `
-        <h2 class='text-2xl font-bold text-purple-700'>Game Over!</h2>
-        <p class='text-lg mt-2'>Final Score: ${score}/${questions.length}</p>
-        <div class="mt-6 space-y-4">
-          <button onclick="window.location.reload()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg">
+        <h2 class='text-4xl font-extrabold text-accent mb-6'>Game Over!</h2>
+        <p class='text-2xl text-primary mb-8'>Final Score: ${score}/${questions.length}</p>
+        <div class="mt-6 space-y-4 max-w-md mx-auto">
+          <button onclick="window.location.reload()" class="btn-primary font-bold py-4 px-8 rounded-full shadow-2xl transition-transform hover:scale-110 text-xl w-full">
             Play Again
           </button>
-          <a href="regions.html" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold py-3 px-6 rounded-lg text-center">
+          <a href="regions.html" class="block w-full text-center text-primary hover-accent font-bold py-4 px-8 rounded-full text-xl">
             Review Regions
           </a>
         </div>
