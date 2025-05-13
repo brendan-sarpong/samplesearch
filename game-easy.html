@@ -109,20 +109,10 @@
 <body>
   <nav class="nav-bg shadow p-4 flex justify-between items-center">
     <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
-    <div class="space-x-4 text-sm">
-      <a href="index.html" class="text-primary hover-accent">Home</a>
-      <a href="game-easy.html" class="text-primary hover-accent">Easy</a>
-      <a href="game-medium.html" class="text-primary hover-accent">Medium</a>
-      <a href="game-hard.html" class="text-primary hover-accent">Hard</a>
-      <div class="inline-block relative group">
-        <button class="text-primary hover-accent focus:outline-none">Regions ▾</button>
-        <div class="absolute hidden group-hover:block dropdown-bg rounded shadow mt-1 right-0">
-          <a href="regions.html#east" class="block px-4 py-2 text-sm text-primary hover:bg-[var(--accent-color)]">East Coast</a>
-          <a href="regions.html#west" class="block px-4 py-2 text-sm text-primary hover:bg-[var(--accent-color)]">West Coast</a>
-          <a href="regions.html#midwest" class="block px-4 py-2 text-sm text-primary hover:bg-[var(--accent-color)]">Midwest</a>
-          <a href="regions.html#south" class="block px-4 py-2 text-sm text-primary hover:bg-[var(--accent-color)]">South</a>
-        </div>
-      </div>
+    <div class="space-x-4">
+      <a href="index.html" class="btn-primary px-4 py-2 rounded">Home</a>
+      <a href="regions.html" class="btn-primary px-4 py-2 rounded">Regions</a>
+      <a href="difficulty.html" class="btn-primary px-4 py-2 rounded">Difficulty</a>
     </div>
   </nav>
 
@@ -140,6 +130,9 @@
     <div id="feedback" class="text-xl font-semibold mt-4 text-primary"></div>
     <div id="region-info" class="mt-4 text-left hidden region-info-bg shadow p-4 rounded-lg text-primary"></div>
     <div id="score" class="text-sm text-accent mt-4">Score: 0</div>
+    <button id="next-button" onclick="nextQuestion()" class="btn-primary font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 text-xl mt-6 hidden">
+      Next
+    </button>
   </main>
 
   <script src="js/quiz.js"></script>

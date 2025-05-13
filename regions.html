@@ -81,18 +81,20 @@
 <body>
   <nav class="nav-bg shadow p-4 flex justify-between items-center">
     <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
-    <div class="space-x-4 text-sm">
-      <a href="index.html" class="text-primary hover-pink">Home</a>
-      <a href="game-easy.html" class="text-primary hover-pink">Easy</a>
-      <a href="game-medium.html" class="text-primary hover-pink">Medium</a>
-      <a href="game-hard.html" class="text-primary hover-pink">Hard</a>
-      <a href="regions.html" class="text-primary hover-pink font-semibold">Regions</a>
+    <div class="space-x-4">
+      <a href="index.html" class="btn-primary px-4 py-2 rounded">Home</a>
+      <a href="regions.html" class="btn-primary px-4 py-2 rounded">Regions</a>
+      <a href="difficulty.html" class="btn-primary px-4 py-2 rounded">Difficulty</a>
     </div>
   </nav>
 
   <main class="flex flex-col items-center justify-center min-h-[80vh] max-w-3xl mx-auto p-6">
     <h2 class="text-4xl font-bold text-center text-accent mb-4">Hip Hop Regions</h2>
     <p class="text-sm text-center text-primary italic mb-8">*Hip Hop has expanded, evolved, and intermingled so much as a genre that these tips are only for identifying quintessential beats of a region. Have fun!</p>
+    <button onclick="window.location.href='difficulty.html'"
+      class="btn-primary font-bold py-6 px-20 rounded-full shadow-2xl transition-transform hover:scale-110 text-3xl w-full max-w-2xl mx-auto mb-12">
+      Choose Gamemode
+    </button>
     <div class="space-y-6 w-full flex flex-col items-center">
       <!-- East Coast Section -->
       <div id="east" class="region-card rounded-lg shadow-md overflow-hidden w-full max-w-xl mx-auto">
