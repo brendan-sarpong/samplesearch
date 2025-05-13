@@ -17,12 +17,14 @@
       --secondary-color: #1e1219;
       --accent-color: #b16961;
     }
-    body {
+
+    body { 
       font-family: 'Rubik', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
       transition: background-color 0.3s, color 0.3s;
     }
+
     .vinyl {
       width: 200px;
       height: 200px;
@@ -34,33 +36,105 @@
       position: relative;
       margin: 0 auto;
     }
+
+    .vinyl::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 4px 1px var(--accent-color);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .nav-bg {
       background-color: var(--secondary-color);
       border-bottom: none;
     }
-    .text-primary { color: var(--text-color); }
-    .text-accent { color: var(--primary-color); }
-    .hover-accent:hover { color: var(--accent-color); }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-color);
+    }
+
+    .text-primary {
+      color: var(--text-color);
+    }
+
+    .text-accent {
+      color: var(--primary-color);
+    }
+
+    .hover-accent:hover {
+      color: var(--accent-color);
+    }
+
+    .dropdown-bg {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+    }
+
+    .region-info-bg {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+    }
   </style>
 </head>
 <body>
   <nav class="nav-bg shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-extrabold text-accent">Sample Searcher IO</h1>
-    <div class="space-x-4 text-sm">
-      <a href="index.html" class="text-primary hover-pink">Home</a>
-      <a href="game-easy.html" class="text-primary hover-pink">Easy</a>
-      <a href="game-medium.html" class="text-primary hover-pink">Medium</a>
-      <a href="game-hard.html" class="text-primary hover-pink">Hard</a>
-      <a href="east.html" class="text-primary hover-pink">East Coast</a>
-      <a href="west.html" class="text-primary hover-pink">West Coast</a>
-      <a href="midwest.html" class="text-primary hover-pink">Midwest</a>
-      <a href="south.html" class="text-primary hover-pink">South</a>
+    <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
+    <div class="space-x-4">
+      <a href="index.html" class="btn-primary px-4 py-2 rounded">Home</a>
+      <a href="regions.html" class="btn-primary px-4 py-2 rounded">Regions</a>
+      <a href="difficulty.html" class="btn-primary px-4 py-2 rounded">Difficulty</a>
     </div>
   </nav>
 
-  <main class="max-w-2xl mx-auto p-6 text-center">
-    <h2 class="text-2xl font-bold mb-4 text-accent">Hard Mode</h2>
-    <p class="text-primary">Coming soon: Guess deep cuts and global subgenres. Real hip hop heads only.</p>
+  <main class="max-w-2xl mx-auto p-6 text-center" id="quiz-area">
+    <h2 class="text-2xl font-bold mb-4 text-accent">Which Region Is This Beat From?</h2>
+    <div class="vinyl mb-4"></div>
+    <audio id="audio" controls class="mx-auto mb-4"></audio>
+    <div id="question-count" class="text-sm text-accent mb-2">Song 1 of X</div>
+    <div class="mb-4">
+      <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('east')">East Coast</button>
+      <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('west')">West Coast</button>
+      <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('south')">South</button>
+      <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('midwest')">Midwest</button>
+    </div>
+    <div id="feedback" class="text-xl font-semibold mt-4 text-primary"></div>
+    <div id="region-info" class="mt-4 text-left hidden region-info-bg shadow p-4 rounded-lg text-primary"></div>
+    <div id="score" class="text-sm text-accent mt-4">Score: 0</div>
+    <button id="next-button" onclick="nextQuestion()" class="btn-primary font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 text-xl mt-6 hidden">
+      Next
+    </button>
   </main>
+
+  <script src="js/quiz.js"></script>
 </body>
 </html>

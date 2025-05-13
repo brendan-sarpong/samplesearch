@@ -27,26 +27,33 @@
     .vinyl {
       width: 200px;
       height: 200px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="100" fill="black"/><defs><linearGradient id="split" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0.5" stop-color="%23c9a4ff"/><stop offset="0.5" stop-color="%235a2673"/></linearGradient></defs><circle cx="100" cy="100" r="22" fill="url(%23split)"/></svg>');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      animation: spin 2s linear infinite;
       position: relative;
       margin: 0 auto;
     }
 
-    .vinyl::before {
-      content: '';
+    .vinyl-disk {
+      width: 100%;
+      height: 100%;
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: var(--accent-color);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 4px 1px var(--accent-color);
+      top: 0;
+      left: 0;
+      background-image: url('assets/Disk.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .vinyl-center {
+      width: 20%;
+      height: 20%;
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      background-image: url('assets/Center.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: spin 2s linear infinite;
     }
 
     @keyframes spin {
@@ -82,6 +89,21 @@
       color: var(--accent-color);
     }
 
+    .dropdown-bg {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+    }
+
+    .region-info-bg {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+    }
+
     @media (prefers-color-scheme: dark) {
       body {
         background-color: var(--background-color);
@@ -93,21 +115,22 @@
 <body class="min-h-screen flex flex-col">
   <nav class="nav-bg shadow p-4 flex justify-between items-center">
     <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
-    <div class="space-x-4 text-sm">
-      <a href="index.html" class="text-primary hover-accent">Home</a>
-      <a href="game-easy.html" class="text-primary hover-accent">Easy</a>
-      <a href="game-medium.html" class="text-primary hover-accent">Medium</a>
-      <a href="game-hard.html" class="text-primary hover-accent">Hard</a>
-      <a href="regions.html" class="text-primary hover-accent font-semibold">Regions</a>
+    <div class="space-x-4">
+      <a href="index.html" class="btn-primary px-4 py-2 rounded">Home</a>
+      <a href="regions.html" class="btn-primary px-4 py-2 rounded">Regions</a>
+      <a href="difficulty.html" class="btn-primary px-4 py-2 rounded">Difficulty</a>
     </div>
   </nav>
 
   <main class="flex-grow flex flex-col justify-center items-center text-center px-4">
     <div class="mb-10">
-      <div class="vinyl mx-auto mb-8" style="width:200px;height:200px;"></div>
+      <div class="vinyl mx-auto mb-8">
+        <div class="vinyl-disk"></div>
+        <div class="vinyl-center"></div>
+      </div>
       <h2 class="text-5xl font-extrabold mb-6 text-accent">Welcome to Sample Searcher IO</h2>
-      <p class="mb-8 text-lg max-w-xl text-primary whitespace-nowrap">Learn how to identify where hip hop beats come from – East, West, South, or Midwest!</p>
-      <button onclick="window.location.href='game-easy.html'"
+      <p class="mb-8 text-lg max-w-xl text-primary whitespace-nowrap">Learn  to identify a hip hop beat's origin: East, West, South, or Midwest! Maybe even beyond...</p>
+      <button onclick="window.location.href='regions.html'"
         class="btn-primary font-bold py-6 px-20 rounded-full shadow-2xl transition-transform hover:scale-110 text-3xl w-full max-w-2xl mx-auto">
         Start Game
       </button>

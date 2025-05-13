@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Difficulty - Sample Searcher IO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --text-color: #f3e6ef;
+      --background-color: #3a2c34;
+      --primary-color: #cd9abe;
+      --secondary-color: #1e1219;
+      --accent-color: #b16961;
+    }
+
+    body { 
+      font-family: 'Rubik', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-bg {
+      background-color: var(--secondary-color);
+      border-bottom: 1px solid var(--primary-color);
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-color);
+    }
+
+    .text-primary {
+      color: var(--text-color);
+    }
+
+    .text-accent {
+      color: var(--primary-color);
+    }
+
+    .hover-accent:hover {
+      color: var(--accent-color);
+    }
+
+    .difficulty-card {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .difficulty-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <nav class="nav-bg shadow p-4 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
+    <div class="space-x-4">
+      <a href="index.html" class="btn-primary px-4 py-2 rounded">Home</a>
+      <a href="regions.html" class="btn-primary px-4 py-2 rounded">Regions</a>
+      <a href="difficulty.html" class="btn-primary px-4 py-2 rounded">Difficulty</a>
+    </div>
+  </nav>
+
+  <main class="flex-grow flex flex-col justify-center items-center text-center px-4 py-12">
+    <h1 class="text-5xl font-extrabold mb-12 text-accent">Choose Your Difficulty</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full px-4">
+      <a href="game-easy.html" class="difficulty-card rounded-lg p-8 text-center">
+        <h2 class="text-3xl font-bold mb-4 text-accent">Easy</h2>
+        <p class="text-lg text-primary">Never used this site? Rusty on hip hop? Start your journey here!</p>
+      </a>
+      
+      <a href="game-medium.html" class="difficulty-card rounded-lg p-8 text-center">
+        <h2 class="text-3xl font-bold mb-4 text-accent">Medium</h2>
+        <p class="text-lg text-primary">For the seasoned hip hop fan. Test your knowledge of regional styles and production techniques.</p>
+      </a>
+      
+      <a href="game-hard.html" class="difficulty-card rounded-lg p-8 text-center">
+        <h2 class="text-3xl font-bold mb-4 text-accent">Hard</h2>
+        <p class="text-lg text-primary">Real hip hop heads only. Deep cuts, obscure samples, and the most challenging regional distinctions await.</p>
+      </a>
+    </div>
+  </main>
+</body>
+</html> 
