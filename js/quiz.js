@@ -4,7 +4,7 @@ const questions = {
     {
       audio: "assets/audio/dr_dre.mp3",
       answer: "west",
-      songTitle: "Still D.R.E.",
+      songTitle: "Nuthing But a G Thang",
       artist: "Dr. Dre ft. Snoop Dogg",
       regionInfo: {
         west: "West Coast: Laid-back sound, G-funk synths, funk-based grooves, storytelling and smooth flows."
