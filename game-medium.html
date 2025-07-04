@@ -27,26 +27,33 @@
     .vinyl {
       width: 200px;
       height: 200px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="100" fill="black"/><defs><linearGradient id="split" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0.5" stop-color="%23c9a4ff"/><stop offset="0.5" stop-color="%235a2673"/></linearGradient></defs><circle cx="100" cy="100" r="22" fill="url(%23split)"/></svg>');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      animation: spin 2s linear infinite;
       position: relative;
       margin: 0 auto;
     }
 
-    .vinyl::before {
-      content: '';
+    .vinyl-disk {
+      width: 100%;
+      height: 100%;
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: var(--accent-color);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 4px 1px var(--accent-color);
+      top: 0;
+      left: 0;
+      background-image: url('assets/Disk.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .vinyl-center {
+      width: 20%;
+      height: 20%;
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      background-image: url('assets/Center.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: spin 2s linear infinite;
     }
 
     @keyframes spin {
@@ -68,6 +75,69 @@
 
     .btn-primary:hover {
       background-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Quiz animations */
+    .fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    .slide-in-up {
+      animation: slideInUp 0.4s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .bounce-in {
+      animation: bounceIn 0.6s ease-out forwards;
+      opacity: 0;
+      transform: scale(0.3);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Button animations */
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      font-weight: bold;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(0);
     }
 
     .text-primary {
@@ -116,20 +186,25 @@
   </nav>
 
   <main class="max-w-2xl mx-auto p-6 text-center" id="quiz-area">
-    <h2 class="text-2xl font-bold mb-4 text-accent">Which Region Is This Beat From?</h2>
-    <div class="vinyl mb-4"></div>
-    <audio id="audio" controls class="mx-auto mb-4"></audio>
-    <div id="question-count" class="text-sm text-accent mb-2">Song 1 of X</div>
+    <h2 class="text-2xl font-bold mb-4 text-accent fade-in">Which Region Is This Beat From?</h2>
+    <div class="vinyl mb-4 fade-in">
+      <div class="vinyl-disk"></div>
+      <div class="vinyl-center"></div>
+    </div>
+    <audio id="audio" controls class="mx-auto mb-4 slide-in-up"></audio>
+    <div id="question-count" class="text-sm text-accent mb-2 fade-in">Song 1 of X</div>
     <div class="mb-4">
       <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('east')">East Coast</button>
       <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('west')">West Coast</button>
       <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('south')">South</button>
       <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('midwest')">Midwest</button>
+      <button class="btn-primary font-bold py-2 px-4 rounded m-2" onclick="checkAnswer('international')">International</button>
     </div>
     <div id="feedback" class="text-xl font-semibold mt-4 text-primary"></div>
+    <div id="song-info" class="mt-2 text-primary text-lg hidden"></div>
     <div id="region-info" class="mt-4 text-left hidden region-info-bg shadow p-4 rounded-lg text-primary"></div>
-    <div id="score" class="text-sm text-accent mt-4">Score: 0</div>
-    <button id="next-button" onclick="nextQuestion()" class="btn-primary font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 text-xl mt-6 hidden">
+    <div id="score" class="text-sm text-accent mt-4 fade-in">Score: 0</div>
+    <button id="next-button" onclick="nextQuestion()" class="btn-primary font-bold py-3 px-8 rounded-full shadow-lg text-xl mt-6 hidden">
       Next
     </button>
   </main>

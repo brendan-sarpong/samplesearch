@@ -61,6 +61,78 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Page load animations */
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .fade-in-up-delay-1 {
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .fade-in-up-delay-2 {
+      animation: fadeInUp 0.8s ease-out 0.4s forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .fade-in-up-delay-3 {
+      animation: fadeInUp 0.8s ease-out 0.6s forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Button animations */
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      font-weight: bold;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(0);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Navigation animations */
+    .nav-link {
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: all 0.2s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
     .nav-bg {
       background-color: var(--secondary-color);
       border-bottom: 1px solid var(--primary-color);
@@ -114,24 +186,24 @@
 </head>
 <body class="min-h-screen flex flex-col">
   <nav class="nav-bg shadow p-4 flex justify-between items-center">
-    <a href="index.html" class="text-2xl font-extrabold text-accent">Sample Searcher IO</a>
+    <a href="index.html" class="text-2xl font-extrabold text-accent nav-link">Sample Searcher IO</a>
     <div class="space-x-4">
-      <a href="index.html" class="btn-primary px-4 py-2 rounded">Home</a>
-      <a href="regions.html" class="btn-primary px-4 py-2 rounded">Regions</a>
-      <a href="difficulty.html" class="btn-primary px-4 py-2 rounded">Difficulty</a>
+      <a href="index.html" class="btn-primary px-4 py-2 rounded nav-link">Home</a>
+      <a href="regions.html" class="btn-primary px-4 py-2 rounded nav-link">Regions</a>
+      <a href="difficulty.html" class="btn-primary px-4 py-2 rounded nav-link">Difficulty</a>
     </div>
   </nav>
 
   <main class="flex-grow flex flex-col justify-center items-center text-center px-4">
     <div class="mb-10">
-      <div class="vinyl mx-auto mb-8">
+      <div class="vinyl mx-auto mb-8 fade-in-up">
         <div class="vinyl-disk"></div>
         <div class="vinyl-center"></div>
       </div>
-      <h2 class="text-5xl font-extrabold mb-6 text-accent">Welcome to Sample Searcher IO</h2>
-      <p class="mb-8 text-lg max-w-xl text-primary whitespace-nowrap">Learn  to identify a hip hop beat's origin: East, West, South, or Midwest! Maybe even beyond...</p>
+      <h2 class="text-5xl font-extrabold mb-6 text-accent fade-in-up-delay-1">Welcome to Sample Searcher IO</h2>
+      <p class="mb-8 text-lg max-w-xl text-primary whitespace-nowrap fade-in-up-delay-2">Learn  to identify a hip hop beat's origin: East, West, South, or Midwest! Maybe even beyond...</p>
       <button onclick="window.location.href='regions.html'"
-        class="btn-primary font-bold py-6 px-20 rounded-full shadow-2xl transition-transform hover:scale-110 text-3xl w-full max-w-2xl mx-auto">
+        class="btn-primary font-bold py-6 px-20 rounded-full shadow-2xl text-3xl w-full max-w-2xl mx-auto fade-in-up-delay-3">
         Start Game
       </button>
     </div>
